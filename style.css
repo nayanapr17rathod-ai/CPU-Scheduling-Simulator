@@ -1,0 +1,596 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f6f3fb;
+    color: #222;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 240px;
+    height: 100vh;
+    background: #24113f;
+    color: white;
+    padding: 25px 16px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #cbbce3;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.menu {
+    padding: 14px 15px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.menu:hover,
+.menu.active {
+    background: #7138c9;
+}
+
+
+/* ================= MAIN ================= */
+
+.main {
+    margin-left: 240px;
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    color: #321458;
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.header p {
+    color: #777;
+    font-size: 14px;
+}
+
+.system-status {
+    background: #eadfff;
+    color: #5d2ca7;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* ================= BUTTONS ================= */
+
+.start-btn {
+    background: #7138c9;
+    color: white;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.start-btn:hover {
+    background: #5c29a9;
+}
+
+.add-btn {
+    background: #7138c9;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background: #5c29a9;
+}
+
+
+/* ================= DASHBOARD ================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(50, 20, 88, 0.08);
+}
+
+.card h4 {
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.card .value {
+    color: #5426a3;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.card p {
+    color: #888;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+
+/* ================= SECTIONS ================= */
+
+.section {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(50, 20, 88, 0.08);
+}
+
+.section h2 {
+    color: #321458;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+
+/* ================= VISUALIZATION ================= */
+
+.visualization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.visualization-header p {
+    color: #777;
+    font-size: 13px;
+}
+
+.live {
+    background: #e9dcff;
+    color: #6333ad;
+    padding: 7px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.simulation-time {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.simulation-time small {
+    color: #777;
+    font-size: 11px;
+}
+
+.simulation-time strong {
+    color: #5426a3;
+    font-size: 25px;
+}
+
+
+/* ================= CPU ================= */
+
+.cpu-box {
+    background: #f7f4fc;
+    border: 1px solid #e6ddf3;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 18px;
+}
+
+.cpu-box h3 {
+    color: #321458;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.cpu-idle {
+    background: #eeeeee;
+    color: #555;
+    padding: 14px;
+    text-align: center;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+
+/* ================= PROCESS STATES ================= */
+
+.state-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.state-box {
+    background: #faf9fc;
+    border: 1px solid #e8e2f0;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.state-box h4 {
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 7px 10px;
+    border-radius: 15px;
+    margin: 3px;
+    font-size: 12px;
+}
+
+.ready {
+    background: #fff0c7;
+    color: #916700;
+}
+
+.running {
+    background: #e6dcff;
+    color: #5a2ba3;
+}
+
+.waiting {
+    background: #dcecff;
+    color: #205b98;
+}
+
+.terminated {
+    background: #ddf4e2;
+    color: #23783a;
+}
+
+.legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* ================= PROCESS MANAGER ================= */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.section-heading h2 {
+    margin-bottom: 4px;
+}
+
+.section-heading p {
+    color: #777;
+    font-size: 13px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #eee7ff;
+    color: #4d238f;
+    padding: 13px;
+    text-align: left;
+    font-size: 13px;
+}
+
+td {
+    padding: 13px;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 14px;
+}
+
+
+/* ================= ALGORITHMS ================= */
+
+.algorithm-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.algorithm-card {
+    border: 1px solid #e2d8ef;
+    border-radius: 12px;
+    padding: 18px;
+    background: #faf9fd;
+}
+
+.algorithm-card.selected {
+    border: 2px solid #7138c9;
+    background: #f2ebff;
+}
+
+.algorithm-icon {
+    display: inline-block;
+    background: #e6dcff;
+    color: #5426a3;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.algorithm-card h3 {
+    color: #5426a3;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.algorithm-card p {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ================= GANTT CHART ================= */
+
+.gantt {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.gantt-block {
+    min-width: 160px;
+    padding: 25px 10px;
+    text-align: center;
+    background: #d9c6ff;
+    border-right: 2px solid white;
+    color: #321458;
+}
+
+.gantt-block:nth-child(2) {
+    background: #e5d8ff;
+}
+
+.gantt-block:nth-child(3) {
+    background: #cdb6f5;
+}
+
+.gantt-block strong {
+    display: block;
+    font-size: 17px;
+}
+
+.gantt-block span {
+    display: block;
+    font-size: 12px;
+    margin-top: 9px;
+    color: #555;
+}
+
+
+/* ================= ANALYTICS ================= */
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.analytics-card {
+    background: #faf9fc;
+    border: 1px solid #e7e0ef;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+.analytics-card h4 {
+    color: #777;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.analytics-card strong {
+    color: #5426a3;
+    font-size: 24px;
+}
+
+
+/* ================= PERFORMANCE ================= */
+
+.performance {
+    background: linear-gradient(135deg, #6d32c9, #8d58e8);
+    color: white;
+}
+
+.performance h2 {
+    color: white;
+}
+
+.performance-subtitle {
+    color: #eee;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.performance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.performance-card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.performance-card h4 {
+    font-size: 13px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.performance-card strong {
+    font-size: 26px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+    text-align: center;
+    color: #888;
+    padding: 20px;
+    font-size: 12px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .algorithm-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .state-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .analytics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        width: 180px;
+    }
+
+    .main {
+        margin-left: 180px;
+        padding: 15px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .algorithm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .state-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+/* ================= CPU STATUS FIX ================= */
+
+.cpu-status-card {
+    overflow: hidden;
+}
+
+.cpu-status-value {
+    display: block;
+    position: relative;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    white-space: nowrap;
+    line-height: 1.2;
+    margin: 5px 0;
+    overflow: visible;
+}
+/* ================= EDITABLE PROCESS INPUTS ================= */
+
+.process-input {
+    width: 70px;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background: white;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+}
+
+.process-input:focus {
+    border-color: #7138c9;
+    box-shadow: 0 0 0 2px rgba(113, 56, 201, 0.12);
+}
+
+.process-input:hover {
+    border-color: #9b75d6;
+}

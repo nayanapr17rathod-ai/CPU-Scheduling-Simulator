@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CPU Scheduler - OS Simulator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* Editable Process Inputs */
+
+        .process-input {
+            width: 70px;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            background: white;
+            color: #333;
+            font-size: 14px;
+            text-align: center;
+            outline: none;
+        }
+
+        .process-input:focus {
+            border-color: #7138c9;
+            box-shadow: 0 0 0 2px rgba(113, 56, 201, 0.12);
+        }
+
+        .process-input:hover {
+            border-color: #9b75d6;
+        }
+
+        /* CPU Status Fix */
+
+        .cpu-status-card {
+            overflow: hidden;
+        }
+
+        .cpu-status-value {
+            display: block;
+            position: relative;
+            text-decoration: none !important;
+            text-decoration-line: none !important;
+            text-decoration-style: none !important;
+            text-decoration-color: transparent !important;
+            white-space: nowrap;
+            line-height: 1.2;
+            margin: 5px 0;
+            overflow: visible;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            CPU Scheduler
+        </div>
+
+        <div class="subtitle">
+            OS Simulator
+        </div>
+
+        <div class="menu active">
+            ▦ Dashboard
+        </div>
+
+        <div class="menu">
+            ▣ Processes
+        </div>
+
+        <div class="menu">
+            ⚙ Algorithms
+        </div>
+
+        <div class="menu">
+            ▥ Simulation
+        </div>
+
+        <div class="menu">
+            ◈ Analytics
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div>
+
+                <h1>
+                    CPU Scheduling Simulator
+                </h1>
+
+                <p>
+                    Visualize and analyze CPU scheduling algorithms
+                </p>
+
+            </div>
+
+            <div class="system-status">
+                ● System Ready
+            </div>
+
+        </header>
+
+
+        <!-- START SIMULATION -->
+
+        <button class="start-btn">
+            ▶ Start Simulation
+        </button>
+
+
+        <!-- ================= DASHBOARD CARDS ================= -->
+
+        <section class="cards">
+
+
+            <!-- CPU STATUS -->
+
+            <div class="card cpu-status-card">
+
+                <h4>
+                    CPU STATUS
+                </h4>
+
+                <div class="value cpu-status-value">
+                    IDLE
+                </div>
+
+                <p>
+                    Simulation completed
+                </p>
+
+            </div>
+
+
+            <!-- PROCESSES -->
+
+            <div class="card">
+
+                <h4>
+                    PROCESSES
+                </h4>
+
+                <div class="value">
+                    3
+                </div>
+
+                <p>
+                    Active processes
+                </p>
+
+            </div>
+
+
+            <!-- ALGORITHM -->
+
+            <div class="card">
+
+                <h4>
+                    ALGORITHM
+                </h4>
+
+                <div class="value">
+                    FCFS
+                </div>
+
+                <p>
+                    Current scheduler
+                </p>
+
+            </div>
+
+
+            <!-- CPU UTILIZATION -->
+
+            <div class="card">
+
+                <h4>
+                    CPU UTILIZATION
+                </h4>
+
+                <div class="value">
+                    100.00%
+                </div>
+
+                <p>
+                    Current utilization
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LIVE VISUALIZATION ================= -->
+
+        <section class="section">
+
+            <div class="visualization-header">
+
+                <div>
+
+                    <h2>
+                        LIVE VISUALIZATION
+                    </h2>
+
+                    <p>
+                        Real-time CPU Scheduling
+                    </p>
+
+                </div>
+
+                <span class="live">
+                    ● LIVE
+                </span>
+
+            </div>
+
+
+            <div class="simulation-time">
+
+                <small>
+                    SIMULATION TIME
+                </small>
+
+                <strong>
+                    12 ms
+                </strong>
+
+            </div>
+
+
+            <!-- CPU -->
+
+            <div class="cpu-box">
+
+                <h3>
+                    CPU CORE 01
+                </h3>
+
+                <div class="cpu-idle">
+                    IDLE
+                </div>
+
+            </div>
+
+
+            <!-- PROCESS STATES -->
+
+            <div class="state-grid">
+
+
+                <!-- READY -->
+
+                <div class="state-box">
+
+                    <h4>
+                        READY QUEUE
+                    </h4>
+
+                    <span class="tag ready">
+                        Empty
+                    </span>
+
+                </div>
+
+
+                <!-- RUNNING -->
+
+                <div class="state-box">
+
+                    <h4>
+                        RUNNING
+                    </h4>
+
+                    <span class="tag running">
+                        CPU Idle
+                    </span>
+
+                </div>
+
+
+                <!-- WAITING -->
+
+                <div class="state-box">
+
+                    <h4>
+                        WAITING
+                    </h4>
+
+                    <span class="tag waiting">
+                        Empty
+                    </span>
+
+                </div>
+
+
+                <!-- TERMINATED -->
+
+                <div class="state-box">
+
+                    <h4>
+                        TERMINATED
+                    </h4>
+
+                    <span class="tag terminated">
+                        P1
+                    </span>
+
+                    <span class="tag terminated">
+                        P2
+                    </span>
+
+                    <span class="tag terminated">
+                        P3
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROCESS STATES ================= -->
+
+        <section class="section">
+
+            <h2>
+                PROCESS STATES
+            </h2>
+
+            <div class="legend">
+
+                <span class="tag ready">
+                    ● READY
+                </span>
+
+                <span class="tag running">
+                    ● RUNNING
+                </span>
+
+                <span class="tag waiting">
+                    ● WAITING
+                </span>
+
+                <span class="tag terminated">
+                    ● TERMINATED
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROCESS MANAGER ================= -->
+
+        <section class="section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        PROCESS MANAGER
+                    </h2>
+
+                    <p>
+                        Process Queue
+                    </p>
+
+                </div>
+
+
+                <button class="add-btn">
+                    + Add Process
+                </button>
+
+            </div>
+
+
+            <!-- PROCESS TABLE -->
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            PID
+                        </th>
+
+                        <th>
+                            ARRIVAL
+                        </th>
+
+                        <th>
+                            BURST
+                        </th>
+
+                        <th>
+                            PRIORITY
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    <!-- P1 -->
+
+                    <tr>
+
+                        <td>
+                            P1
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input arrival-input"
+                                value="0"
+                                min="0">
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input burst-input"
+                                value="5"
+                                min="1">
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input priority-input"
+                                value="2"
+                                min="1">
+                        </td>
+
+                    </tr>
+
+
+                    <!-- P2 -->
+
+                    <tr>
+
+                        <td>
+                            P2
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input arrival-input"
+                                value="1"
+                                min="0">
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input burst-input"
+                                value="3"
+                                min="1">
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input priority-input"
+                                value="1"
+                                min="1">
+                        </td>
+
+                    </tr>
+
+
+                    <!-- P3 -->
+
+                    <tr>
+
+                        <td>
+                            P3
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input arrival-input"
+                                value="2"
+                                min="0">
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input burst-input"
+                                value="4"
+                                min="1">
+                        </td>
+
+                        <td>
+                            <input
+                                type="number"
+                                class="process-input priority-input"
+                                value="3"
+                                min="1">
+                        </td>
+
+                    </tr>
+
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+
+        <!-- ================= SCHEDULER ================= -->
+
+        <section class="section">
+
+            <h2>
+                SCHEDULER
+            </h2>
+
+            <p class="section-subtitle">
+                Select Algorithm
+            </p>
+
+
+            <div class="algorithm-grid">
+
+
+                <!-- FCFS -->
+
+                <div class="algorithm-card selected">
+
+                    <div class="algorithm-icon">
+                        FCFS
+                    </div>
+
+                    <h3>
+                        First Come First Serve
+                    </h3>
+
+                    <p>
+                        Processes are executed in the
+                        order they arrive.
+                    </p>
+
+                </div>
+
+
+                <!-- SJF -->
+
+                <div class="algorithm-card">
+
+                    <div class="algorithm-icon">
+                        SJF
+                    </div>
+
+                    <h3>
+                        Shortest Job First
+                    </h3>
+
+                    <p>
+                        The process with the shortest
+                        burst time executes first.
+                    </p>
+
+                </div>
+
+
+                <!-- ROUND ROBIN -->
+
+                <div class="algorithm-card">
+
+                    <div class="algorithm-icon">
+                        RR
+                    </div>
+
+                    <h3>
+                        Round Robin
+                    </h3>
+
+                    <p>
+                        Each process receives a fixed
+                        time quantum.
+                    </p>
+
+                </div>
+
+
+                <!-- PRIORITY -->
+
+                <div class="algorithm-card">
+
+                    <div class="algorithm-icon">
+                        P
+                    </div>
+
+                    <h3>
+                        Priority
+                    </h3>
+
+                    <p>
+                        Processes execute according
+                        to their priority.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EXECUTION ================= -->
+
+        <section class="section">
+
+            <h2>
+                EXECUTION
+            </h2>
+
+            <p class="section-subtitle">
+                Gantt Chart
+            </p>
+
+
+            <div class="gantt">
+
+                <div class="gantt-block">
+
+                    <strong>
+                        P1
+                    </strong>
+
+                    <span>
+                        0 → 5
+                    </span>
+
+                </div>
+
+
+                <div class="gantt-block">
+
+                    <strong>
+                        P2
+                    </strong>
+
+                    <span>
+                        5 → 8
+                    </span>
+
+                </div>
+
+
+                <div class="gantt-block">
+
+                    <strong>
+                        P3
+                    </strong>
+
+                    <span>
+                        8 → 12
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ANALYTICS ================= -->
+
+        <section class="section">
+
+            <h2>
+                ANALYTICS
+            </h2>
+
+
+            <div class="analytics-grid">
+
+
+                <div class="analytics-card">
+
+                    <h4>
+                        PROCESSES COMPLETED
+                    </h4>
+
+                    <strong>
+                        3
+                    </strong>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <h4>
+                        TOTAL CPU TIME
+                    </h4>
+
+                    <strong>
+                        12 ms
+                    </strong>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <h4>
+                        CPU UTILIZATION
+                    </h4>
+
+                    <strong>
+                        100%
+                    </strong>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <h4>
+                        THROUGHPUT
+                    </h4>
+
+                    <strong>
+                        0.25
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PERFORMANCE ================= -->
+
+        <section class="section performance">
+
+            <h2>
+                PERFORMANCE
+            </h2>
+
+            <p class="performance-subtitle">
+                Scheduling Results
+            </p>
+
+
+            <div class="performance-grid">
+
+
+                <div class="performance-card">
+
+                    <h4>
+                        Average Waiting Time
+                    </h4>
+
+                    <strong>
+                        3.33 ms
+                    </strong>
+
+                </div>
+
+
+                <div class="performance-card">
+
+                    <h4>
+                        Average Turnaround Time
+                    </h4>
+
+                    <strong>
+                        7.33 ms
+                    </strong>
+
+                </div>
+
+
+                <div class="performance-card">
+
+                    <h4>
+                        Average Response Time
+                    </h4>
+
+                    <strong>
+                        3.33 ms
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            CPU Scheduling Simulator •
+            Operating Systems Project
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</body>
+
+</html>
